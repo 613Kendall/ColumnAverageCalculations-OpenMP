@@ -13,7 +13,7 @@
 #define MAX_COL_NAME_LEN 32
 #define MAX_FIELDS 256
 
-const char* DEFAULT_CSV_PATH = "lab4/data/fitness_0.5x.csv";
+const char* DEFAULT_CSV_PATH = "lab5/data/fitness_0.5x.csv";
 
 typedef struct {
     char name[MAX_COL_NAME_LEN];

@@ -11,12 +11,12 @@
 #        ./run_profile.sh column_averages/column_averages.c 1 2 4 8
 #
 # If a program name is provided, this script expects:
-#   <lab4>/<program_name>/<program_name>.c
+#   <lab5>/<program_name>/<program_name>.c
 
 set -e
 
 SCRIPT_DIR="${0:A:h}"
-LAB4_DIR="${SCRIPT_DIR:h}"
+LAB5_DIR="${SCRIPT_DIR:h}"
 
 SCALING_MODE=""
 if [[ "${1:-}" == --strong || "${1:-}" == --weak ]]; then
@@ -35,13 +35,13 @@ fi
 
 if [[ -f "$INPUT" ]]; then
     SRC_FILE="${INPUT:A}"
-elif [[ -f "$LAB4_DIR/$INPUT/$INPUT.c" ]]; then
-    SRC_FILE="$LAB4_DIR/$INPUT/$INPUT.c"
-elif [[ -f "$LAB4_DIR/$INPUT.c" ]]; then
-    SRC_FILE="$LAB4_DIR/$INPUT.c"
+elif [[ -f "$LAB5_DIR/$INPUT/$INPUT.c" ]]; then
+    SRC_FILE="$LAB5_DIR/$INPUT/$INPUT.c"
+elif [[ -f "$LAB5_DIR/$INPUT.c" ]]; then
+    SRC_FILE="$LAB5_DIR/$INPUT.c"
 else
     echo "Error: could not resolve source from '$INPUT'" >&2
-    echo "Expected either an existing .c path, or $LAB4_DIR/<name>/<name>.c" >&2
+    echo "Expected either an existing .c path, or $LAB5_DIR/<name>/<name>.c" >&2
     exit 1
 fi
 
@@ -63,12 +63,12 @@ done
 DATASETS=()
 if [[ "$SCALING_MODE" == weak_scaling ]]; then
     for scale in 0.5 1 2 4; do
-        DATASETS+=("$LAB4_DIR/data/fitness_${scale}x.csv")
+        DATASETS+=("$LAB5_DIR/data/fitness_${scale}x.csv")
     done
 else
-    CSV_PATH="${CSV_PATH:-$LAB4_DIR/data/fitness_0.5x.csv}"
+    CSV_PATH="${CSV_PATH:-$LAB5_DIR/data/fitness_0.5x.csv}"
     if [[ "$SCALING_MODE" == strong_scaling ]]; then
-        CSV_PATH="$LAB4_DIR/data/fitness_0.5x.csv"
+        CSV_PATH="$LAB5_DIR/data/fitness_0.5x.csv"
     fi
     for n in "${THREAD_COUNTS[@]}"; do
         DATASETS+=("${CSV_PATH:A}")
@@ -84,7 +84,7 @@ done
 echo "Building libompt_profiler.so..."
 clang -O2 -fPIC -shared \
     -I "$LIBOMP_PREFIX/include" -L "$LIBOMP_PREFIX/lib" -lomp \
-    "$LAB4_DIR/ompt_profiler.c" -o "$LAB4_DIR/libompt_profiler.so"
+    "$LAB5_DIR/ompt_profiler.c" -o "$LAB5_DIR/libompt_profiler.so"
 
 echo "Building $PROGRAM_NAME from $SRC_FILE..."
 clang -Xpreprocessor -fopenmp \
@@ -92,7 +92,7 @@ clang -Xpreprocessor -fopenmp \
     -O2 -o "$BINARY_PATH" "$SRC_FILE"
 
 export OMP_TOOL=enabled
-export OMP_TOOL_LIBRARIES="$LAB4_DIR/libompt_profiler.so"
+export OMP_TOOL_LIBRARIES="$LAB5_DIR/libompt_profiler.so"
 export DYLD_LIBRARY_PATH="$LIBOMP_PREFIX/lib:$DYLD_LIBRARY_PATH"
 
 OUTPUT_DIR="$PROGRAM_DIR"

@@ -8,7 +8,7 @@ import sys
 
 import pandas as pd
 
-DEFAULT_CSV_PATH = "/Users/ksmith25/School/Fall_2026/CMSC483/ColumnAverageCalculations-OpenMP/lab4/data/fitness_0.5x.csv"
+DEFAULT_CSV_PATH = "/Users/ksmith25/School/Fall_2026/CMSC483/ColumnAverageCalculations-OpenMP/lab5/data/fitness_0.5x.csv"
 
 
 def main() -> None:

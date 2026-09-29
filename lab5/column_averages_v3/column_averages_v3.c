@@ -20,7 +20,7 @@
 #define MAX_FIELDS 256
 #define BATCH_ROWS 8192
 
-const char* DEFAULT_CSV_PATH = "lab4/data/fitness_0.5x.csv";
+const char* DEFAULT_CSV_PATH = "lab5/data/fitness_0.5x.csv";
 
 typedef struct {
     char name[MAX_COL_NAME_LEN];
