@@ -53,3 +53,12 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+#data files - too large
+data/
+
+
+utils/strong_scaling.sh column_averages_v2;
+utils/weak_scaling.sh column_averages_v2 &&;
+utils/strong_scaling.sh column_averages_v3;
+utils/weak_scaling.sh column_averages_v3;

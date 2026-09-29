@@ -1,0 +1,17 @@
+--- Benchmark started: 2026-09-28 18:18:01 ---
+--- Dataset: /Users/ksmith25/School/Fall_2026/CMSC483/ColumnAverageCalculations-OpenMP/lab4/data/fitness_0.5x.csv ---
+--- OMP_NUM_THREADS=1 ---
+4.60user 0.17system 0:05.19elapsed 92%CPU (0avgtext+0avgdata 34896maxresident)k
+0inputs+0outputs (30major+2499minor)pagefaults 0swaps
+--- Dataset: /Users/ksmith25/School/Fall_2026/CMSC483/ColumnAverageCalculations-OpenMP/lab4/data/fitness_0.5x.csv ---
+--- OMP_NUM_THREADS=2 ---
+4.61user 0.14system 0:02.63elapsed 181%CPU (0avgtext+0avgdata 34896maxresident)k
+0inputs+0outputs (7major+2527minor)pagefaults 0swaps
+--- Dataset: /Users/ksmith25/School/Fall_2026/CMSC483/ColumnAverageCalculations-OpenMP/lab4/data/fitness_0.5x.csv ---
+--- OMP_NUM_THREADS=4 ---
+4.63user 0.15system 0:01.57elapsed 303%CPU (0avgtext+0avgdata 34928maxresident)k
+0inputs+0outputs (6major+2535minor)pagefaults 0swaps
+--- Dataset: /Users/ksmith25/School/Fall_2026/CMSC483/ColumnAverageCalculations-OpenMP/lab4/data/fitness_0.5x.csv ---
+--- OMP_NUM_THREADS=8 ---
+5.54user 0.20system 0:01.31elapsed 435%CPU (0avgtext+0avgdata 35152maxresident)k
+0inputs+0outputs (6major+2559minor)pagefaults 0swaps
